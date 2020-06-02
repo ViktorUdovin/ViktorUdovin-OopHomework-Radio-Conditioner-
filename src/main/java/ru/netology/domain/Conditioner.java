@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 public class Conditioner {
 
-    String name;
+    private String name;
     private int maxTemperature;
     private int minTemperature;
     private int currentTemperature;

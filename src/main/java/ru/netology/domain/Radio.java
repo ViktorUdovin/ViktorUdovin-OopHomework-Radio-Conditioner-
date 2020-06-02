@@ -1,7 +1,7 @@
 package ru.netology.domain;
 
 public class Radio {
-    String name;
+    private String name;
     private int maxVolume;
     private int minVolume;
     private int currentVolume;

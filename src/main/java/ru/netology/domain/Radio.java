@@ -8,8 +8,20 @@ public class Radio {
     private int currentStation;
     private int firstStation;
     private int lastStation;
+    private int editCurrentStation;
     private boolean on = true;
 
+    public Radio(String name, int maxVolume, int minVolume, int currentVolume, int currentStation, int firstStation,  int lastStation, int editCurrentStation, boolean on) {
+        this.name = name;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.currentVolume = currentVolume;
+        this.currentStation = currentStation;
+        this.firstStation = firstStation;
+        this.lastStation = lastStation;
+        this.editCurrentStation = editCurrentStation;
+        this.on = on;
+    }
 
     public String getName() {
         return name;
@@ -110,6 +122,23 @@ public class Radio {
             return;
         }
         setCurrentStation(this.currentStation - 1);
+        System.out.println("Включена станция #" + currentStation);
+    }
+
+    public void editcurrentstation() {
+        if (editCurrentStation < firstStation) {
+            setCurrentStation(this.currentStation);
+            System.out.println("Невозможно выбрать станцию #" + editCurrentStation);
+            System.out.println("Включена станция #" + currentStation);
+            return;
+        }
+        if (editCurrentStation > lastStation){
+            setCurrentStation(this.currentStation);
+            System.out.println("Невозможно выбрать станцию #" + editCurrentStation);
+            System.out.println("Включена станция #" + currentStation);
+            return;
+        }
+        currentStation = editCurrentStation;
         System.out.println("Включена станция #" + currentStation);
     }
 

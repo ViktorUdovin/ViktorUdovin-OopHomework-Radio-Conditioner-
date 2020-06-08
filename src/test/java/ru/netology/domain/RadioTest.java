@@ -8,137 +8,77 @@ class RadioTest {
 
     @Test
     public void incraseCurrentVolume() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setMaxVolume(10);
-        radio.getMaxVolume();
-        radio.setMinVolume(0);
-        radio.getMinVolume();
-        radio.setCurrentVolume(5);
+        Radio radio = new Radio("name",100,0,25,5,1,10,5, true);
         radio.increaseCurrentVolume();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(26, radio.getCurrentVolume());
     }
 
     @Test
     public void decraseCurrentVolume() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setMaxVolume(10);
-        radio.getMaxVolume();
-        radio.setMinVolume(0);
-        radio.getMinVolume();
-        radio.setCurrentVolume(5);
+        Radio radio = new Radio("name",100,0,25,5,1,10, 5,true);
         radio.decreaseCurrentVolume();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
-        assertEquals(4, radio.getCurrentVolume());
+        assertEquals(24, radio.getCurrentVolume());
     }
 
     @Test
     public void incraseCurrentVolumeLimit() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setMaxVolume(10);
-        radio.getMaxVolume();
-        radio.setMinVolume(0);
-        radio.getMinVolume();
-        radio.setCurrentVolume(10);
+        Radio radio = new Radio("name",100,0,100,5,1,10, 5,true);
         radio.increaseCurrentVolume();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
+
 
     @Test
     public void decraseCurrentVolumeLimit() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentVolume());
-        radio.setMaxVolume(10);
-        radio.getMaxVolume();
-        radio.setMinVolume(0);
-        radio.getMinVolume();
-        radio.setCurrentVolume(0);
+        Radio radio = new Radio("name",100,0,0,5,1,10, 5,true);
         radio.decreaseCurrentVolume();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
         assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
     public void previosStationFirst() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentStation());
-        radio.setLastStation(9);
-        radio.getLastStation();
-        radio.setFirstStation(1);
-        radio.getFirstStation();
-        radio.setCurrentStation(1);
-        radio.previosStation();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
-        assertEquals(9, radio.getCurrentStation());
-    }
+            Radio radio = new Radio("name",100,0,100,1,1,10, 1,true);
+            radio.previosStation();
+            assertEquals(10, radio.getCurrentStation());
+        }
 
     @Test
     public void nextStationLast() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentStation());
-        radio.setLastStation(9);
-        radio.getLastStation();
-        radio.setFirstStation(1);
-        radio.getFirstStation();
-        radio.setCurrentStation(9);
+        Radio radio = new Radio("name",100,0,100,10,1,10, 10,true);
         radio.nextStation();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
         assertEquals(1, radio.getCurrentStation());
     }
 
     @Test
     public void nextstation() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentStation());
-        radio.setLastStation(9);
-        radio.getLastStation();
-        radio.setFirstStation(1);
-        radio.getFirstStation();
-        radio.setCurrentStation(6);
+        Radio radio = new Radio("name",100,0,100,5,1,10, 5,true);
         radio.nextStation();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
-        assertEquals(7, radio.getCurrentStation());
-    }
+        assertEquals(6, radio.getCurrentStation());    }
 
     @Test
     public void previosStation() {
-        Radio radio = new Radio();
-        assertEquals(0, radio.getCurrentStation());
-        radio.setLastStation(9);
-        radio.getLastStation();
-        radio.setFirstStation(1);
-        radio.getFirstStation();
-        radio.setCurrentStation(5);
+        Radio radio = new Radio("name",100,0,100,5,1,10, 5,true);
         radio.previosStation();
-        radio.setName(toString());
-        radio.getName();
-        radio.isOn();
-        radio.setOn(true);
         assertEquals(4, radio.getCurrentStation());
+    }
+
+    @Test
+    public void editCurrentStation(){
+        Radio radio = new Radio("name",100,0,100,5,1,10, 7,true);
+        radio.editcurrentstation();
+        assertEquals(7,radio.getCurrentStation());
+
+    }
+    @Test
+    public void editCurrentStationMaxLimit() {
+        Radio radio = new Radio("name", 100, 0, 100, 5, 1, 10, 17, true);
+        radio.editcurrentstation();
+        assertEquals(5, radio.getCurrentStation());
+    }
+    @Test
+    public void editCurrentStationMinLimit() {
+        Radio radio = new Radio("name", 100, 0, 100, 5, 1, 10, 0, true);
+        radio.editcurrentstation();
+        assertEquals(5, radio.getCurrentStation());
     }
 }

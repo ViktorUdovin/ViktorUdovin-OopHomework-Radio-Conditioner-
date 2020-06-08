@@ -1,5 +1,12 @@
 package ru.netology.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private String name;
     private int maxVolume;
@@ -11,78 +18,7 @@ public class Radio {
     private int editCurrentStation;
     private boolean on = true;
 
-    public Radio(String name, int maxVolume, int minVolume, int currentVolume, int currentStation, int firstStation,  int lastStation, int editCurrentStation, boolean on) {
-        this.name = name;
-        this.maxVolume = maxVolume;
-        this.minVolume = minVolume;
-        this.currentVolume = currentVolume;
-        this.currentStation = currentStation;
-        this.firstStation = firstStation;
-        this.lastStation = lastStation;
-        this.editCurrentStation = editCurrentStation;
-        this.on = on;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String inputName) {
-        this.name = inputName;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int inputMaxVolume) {
-
-        this.maxVolume = inputMaxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int inputMinVolume) {
-        this.minVolume = inputMinVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-
-        this.currentVolume = currentVolume;
-
-        System.out.println("текущая громкость - " + this.currentVolume);
-
-    }
-
-    public int getLastStation() {
-        return lastStation;
-    }
-
-    public void setLastStation(int lastStation) {
-        this.lastStation = lastStation;
-    }
-
-    public int getFirstStation() {
-        return firstStation;
-    }
-
-    public void setFirstStation(int firstStation) {
-        this.firstStation = firstStation;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        this.currentStation = currentStation;
-    }
 
 
     public void increaseCurrentVolume() {
@@ -91,7 +27,6 @@ public class Radio {
             return;
         }
         setCurrentVolume(this.currentVolume + 1);
-
     }
 
     public void decreaseCurrentVolume() {
@@ -99,9 +34,7 @@ public class Radio {
             System.out.println("Минимальная громкость");
             return;
         }
-
         setCurrentVolume(this.currentVolume - 1);
-
     }
 
     public void nextStation() {
@@ -112,7 +45,6 @@ public class Radio {
         }
         setCurrentStation(this.currentStation + 1);
         System.out.println("Включена станция #" + currentStation);
-
     }
 
     public void previosStation() {
@@ -132,7 +64,7 @@ public class Radio {
             System.out.println("Включена станция #" + currentStation);
             return;
         }
-        if (editCurrentStation > lastStation){
+        if (editCurrentStation > lastStation) {
             setCurrentStation(this.currentStation);
             System.out.println("Невозможно выбрать станцию #" + editCurrentStation);
             System.out.println("Включена станция #" + currentStation);
@@ -140,14 +72,6 @@ public class Radio {
         }
         currentStation = editCurrentStation;
         System.out.println("Включена станция #" + currentStation);
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
     }
 
 }

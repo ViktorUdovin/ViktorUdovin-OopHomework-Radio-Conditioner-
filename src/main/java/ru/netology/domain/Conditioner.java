@@ -1,7 +1,14 @@
 package ru.netology.domain;
 
-public class Conditioner {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
+public class Conditioner {
     private String name;
     private int maxTemperature;
     private int minTemperature;
@@ -9,40 +16,8 @@ public class Conditioner {
     private boolean on = true;
 
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String inputName) {
-        this.name = inputName;
-    }
-
-    public int getMaxTemperature() {
-        return maxTemperature;
-    }
-
-    public void setMaxTemperature(int inputMaxTemperature) {
-
-        this.maxTemperature = inputMaxTemperature;
-    }
-
-    public int getMinTemperature() {
-        return minTemperature;
-    }
-
-    public void setMinTemperature(int inputMinTemperature) {
-        this.minTemperature = inputMinTemperature;
-    }
-
-    public int getCurrentTemperature() {
-        return currentTemperature;
-    }
-
     public void setCurrentTemperature(int currentTemperature) {
-
         this.currentTemperature = currentTemperature;
-
-
     }
 
     public void increaseCurrentTemperature() {
@@ -52,7 +27,6 @@ public class Conditioner {
         }
         setCurrentTemperature(this.currentTemperature + 1);
         System.out.println("Текущая температура = " + currentTemperature);
-
     }
 
     public void decreaseCurrentTemperature() {
@@ -60,19 +34,7 @@ public class Conditioner {
             System.out.println("Минимальная температура = " + currentTemperature);
             return;
         }
-
         setCurrentTemperature(this.currentTemperature - 1);
         System.out.println("Текущая температура = " + currentTemperature);
-
     }
-
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
 }
